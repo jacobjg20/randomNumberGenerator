@@ -4,31 +4,47 @@
 		<title>Hello</title>
     <style>
 
-    body {
+    body{
         background-color: #96b2d7;
+        height: 100vw;
+        font-size: 1.5em;
+        width: 100%;
     }
 
-    #display {
-      font-size: 200px;
-    }
 
     </style>
 	</head>
 	<body>
-    <div id ="display">
 
+      Enter desired number length:
+      <input id="userInput">
+      <button id = "generateButton">Generate</button>
+
+    <div id ="display">
     </div>
 	</body>
     <script>
+    
+    var display = document.getElementById("display");
+    var userInput = document.getElementById("userInput");
 
+    document.getElementById("generateButton").onclick = function(){
+          display.innerHTML =  randomNumber(userInput.value);
 
-      function randomNumber(){
-        let number = "";
-        for(let i =0 ;i < 10; i++){
-          number += Math.round(Math.random() * 9);
-        }
-        return number;
+          if(display.innerHTML == ""){
+            alert("Opps thats not a number");
+          }
+
+          userInput.value = "";
+    }
+
+    function randomNumber(length){
+      let number = "";
+      for(let i =0 ;i < length; i++){
+        number += Math.round(Math.random() * 9);
       }
-      document.getElementById('display').innerHTML = randomNumber();
+      return number;
+    }
+
   	</script>
 </html>
